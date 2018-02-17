@@ -10,6 +10,7 @@ import { BookComponent } from './book/book.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookControlService } from './book-control.service';
 
 const appRoutes: Routes = [
   {
@@ -54,8 +55,9 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [BookControlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
 
