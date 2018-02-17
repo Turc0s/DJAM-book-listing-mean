@@ -26,6 +26,7 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!bookForm.form.valid">Update</button>
+          <button type="button" class="btn btn-default" [routerLink]="['/book-details', book._id]">Back</button>
         </div>
       </form>
     </div>
