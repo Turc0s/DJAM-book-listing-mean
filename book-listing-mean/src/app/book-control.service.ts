@@ -7,8 +7,12 @@ import "rxjs/Rx";
 @Injectable()
 export class BookControlService {
 
-  // bookList: Book[];
+  bookList: Book[];
+  // book:Book;
+  // newBook: Book = new Book();
   // book: Book;
+  // books:any;
+  book = {};
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,10 +20,51 @@ export class BookControlService {
     return this.httpClient.get("/book");
   }
 
+  getSingleBook(id: any) {
+    return this.httpClient.get("/book/"+id);
+  }
+
+  addNewBook() {
+    return this.httpClient.post("/book", this.book);
+  }
+
+  updateBook() {
+    
+  }
+
+  deleteBook(id: any) {
+    return this.httpClient.delete("/book/"+id);
+  }
+
+  showAllBooks() {
+    this.getAllBooks()
+      .subscribe((book: Book[]) => {
+        this.bookList = book;
+      });
+  }
+
+  // saveBook() {
+  //   this.http.post('/book', this.book)
+  //     .subscribe(res => {
+  //         let id = res['_id'];
+  //         this.router.navigate(['/book-details', id]);
+  //       }, (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  // }
+
   // this.http.get('/book').subscribe(data => {
   //   console.log(data);
   //   this.books = data;
   // });
+
+  
+
+  // this._bookcontrolService.getAllBooks()
+    //           .subscribe(book => {
+    //             this.books = book;
+    //           });
 
 
 }

@@ -7,21 +7,14 @@ import { Book } from '../book.model';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
 
-  books: any;
-
-  constructor(private http: HttpClient,
-              private _bookcontrolService: BookControlService) { }
+  constructor(private _bookcontrolService: BookControlService) { }
 
   ngOnInit() {
-    this._bookcontrolService.getAllBooks()
-              .subscribe(book => {
-                this.books = book;
-              });
+    this._bookcontrolService.showAllBooks();
   }
 
 }
