@@ -12,7 +12,7 @@ export class BookControlService {
   // newBook: Book = new Book();
   // book: Book;
   // books:any;
-  book = {};
+  book:any = {};
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,8 +28,9 @@ export class BookControlService {
     return this.httpClient.post("/book", this.book);
   }
 
-  updateBook() {
-    
+  updateBook(id: any) {
+    this.book.updated_date = Date.now();
+    return this.httpClient.put("/book/"+id, this.book);
   }
 
   deleteBook(id: any) {
@@ -42,29 +43,5 @@ export class BookControlService {
         this.bookList = book;
       });
   }
-
-  // saveBook() {
-  //   this.http.post('/book', this.book)
-  //     .subscribe(res => {
-  //         let id = res['_id'];
-  //         this.router.navigate(['/book-details', id]);
-  //       }, (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  // }
-
-  // this.http.get('/book').subscribe(data => {
-  //   console.log(data);
-  //   this.books = data;
-  // });
-
-  
-
-  // this._bookcontrolService.getAllBooks()
-    //           .subscribe(book => {
-    //             this.books = book;
-    //           });
-
 
 }

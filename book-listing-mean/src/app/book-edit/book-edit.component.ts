@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { BookControlService } from '../book-control.service';
 
 @Component({
   selector: 'app-book-edit',
@@ -11,23 +12,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookEditComponent implements OnInit {
 
-  book: any = {};
-
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+              private _bookControlService: BookControlService) { }
 
   ngOnInit() {
-    this.getBook(this.route.snapshot.params['id']);
+    this.getBookEditDetails(this.route.snapshot.params["id"]);
   }
 
-  getBook(id) {
-    this.http.get('/book/'+id).subscribe(data => {
-      this.book = data;
+  getBookEditDetails(id) {
+    this._bookControlService.getSingleBook(id)
+    .subscribe(data => {
+      this._bookControlService.book = data;
     });
   }
 
   updateBook(id) {
-    this.book.updated_date = Date.now();
-    this.http.put('/book/'+id, this.book)
+   this._bookControlService.updateBook(id)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['/book-details', id]);

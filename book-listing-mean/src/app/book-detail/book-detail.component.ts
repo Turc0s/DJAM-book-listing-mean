@@ -12,8 +12,6 @@ import { BookControlService } from '../book-control.service';
 })
 export class BookDetailComponent implements OnInit {
 
-  book = {};
-
   constructor(private router: Router, private route: ActivatedRoute,
               private _bookControlService: BookControlService) { }
 
@@ -25,17 +23,10 @@ export class BookDetailComponent implements OnInit {
   getBookDetail(id) {
     this._bookControlService.getSingleBook(id)
     .subscribe(data => {
-      this.book = data;
+      this._bookControlService.book = data;
     });
     console.log("getBookDetail(): " + id)
   }
-
-  // getBookDetail(id) {
-  //   this.http.get('/book/'+id).subscribe(data => {
-  //     this.book = data;
-  //   });
-  //   console.log("getBookDetail(): " + id)
-  // } // ORIGINAL
 
   deleteBook(id) {
     this._bookControlService.deleteBook(id)
@@ -46,16 +37,6 @@ export class BookDetailComponent implements OnInit {
         }
       );
   }
-
-  // deleteBook(id) {
-  //   this.http.delete('/book/'+id)
-  //     .subscribe(res => {
-  //         this.router.navigate(['/books']);
-  //       }, (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  // } // ORIGINAL
 
 }
 

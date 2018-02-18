@@ -29,39 +29,6 @@ export class BookCreateComponent implements OnInit {
           console.log(err);
         }
       );
-  }  //ORIGINAL
-
-  // saveBook(createForm: NgForm) {
-  //   const newBook = {
-  //     isbn: this._bookControlService.newBook.isbn,
-  //     title: this._bookControlService.newBook.title,
-  //     author: this._bookControlService.newBook.author,
-  //     description: this._bookControlService.newBook.description,
-  //     published_year: this._bookControlService.newBook.published_year,
-  //     publisher: this._bookControlService.newBook.publisher,
-  //   }
-  //   this._bookControlService.addNewBook(newBook)
-  //             .subscribe((res: Book) => {
-  //               this._bookControlService.newBook = res;
-  //             });
-  // }
-
-//   let id = res["_id"];
-//   this.router.navigate(["/book-details", id]);
-// }, (err) => {
-//   console.log(err);
-
-
-
-  // saveBook() {
-  //   this.http.post('/book', this.book)
-  //     .subscribe(res => {
-  //         let id = res['_id'];
-  //         this.router.navigate(['/book-details', id]);
-  //       }, (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  // }  //ORIGINAL
+  }  
 
 }
